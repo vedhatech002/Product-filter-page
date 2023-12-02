@@ -65,6 +65,7 @@ const productsData = [
 ];
 
 const productContainer = document.querySelector("#products-container");
+const categoryList = document.querySelector("#category-list");
 // console.log(productContainer);
 
 //function to display product
@@ -111,6 +112,19 @@ function setCategories() {
       return allCategories.indexOf(category) === index;
     }),
   ];
-  console.log(categories);
+  categoryList.innerHTML = categories
+    .map((category) => `<li class="cursor-pointer">${category}</li>`)
+    .join("");
+  categoryList.addEventListener("click", (e) => {
+    let selectedCategory = e.target.innerText;
+    // console.log(selectedCategory);
+    selectedCategory === "All"
+      ? displayProducts(productsData)
+      : displayProducts(
+          productsData.filter(
+            (product) => product.category === selectedCategory
+          )
+        );
+  });
 }
 setCategories();
