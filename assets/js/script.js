@@ -1,4 +1,6 @@
-const productsData = [
+import productsData from "../data/data.json";
+
+/*const productsData = [
   {
     id: 1,
     name: "Cotton Buffalo Check Slim Fit Casual Shirt",
@@ -62,7 +64,7 @@ const productsData = [
     price: 499,
     img: "https://www.dennislingo.com/cdn/shop/products/DLMTSS23130-TL_2_720x.jpg?v=1688718408",
   },
-];
+];*/
 
 const productContainer = document.querySelector("#products-container");
 const categoryList = document.querySelector("#category-list");
@@ -97,7 +99,7 @@ function displayProducts(products) {
       )
       .join("");
     productContainer.innerHTML = products_details;
-    console.log(products_details);
+    // console.log(products_details);
   } else {
     console.log("uhhho! sorry No products found");
   }
@@ -112,19 +114,30 @@ function setCategories() {
       return allCategories.indexOf(category) === index;
     }),
   ];
+
   categoryList.innerHTML = categories
-    .map((category) => `<li class="cursor-pointer">${category}</li>`)
+    .map(
+      (category) =>
+        `<li class="cursor-pointer">
+        <label>
+        <input type="radio" name="category" value="${category}"/>${category}
+        </label>
+        </li>`
+    )
     .join("");
-  categoryList.addEventListener("click", (e) => {
-    let selectedCategory = e.target.innerText;
-    // console.log(selectedCategory);
-    selectedCategory === "All"
-      ? displayProducts(productsData)
-      : displayProducts(
-          productsData.filter(
-            (product) => product.category === selectedCategory
-          )
-        );
-  });
+
+  // filter
+  categoryList.addEventListener("change", filterbyCategories);
 }
 setCategories();
+
+function filterbyCategories(e) {
+  let selectedCategory = e.target.value;
+  console.log(selectedCategory);
+  // console.log(selectedCategory);
+  selectedCategory === "All"
+    ? displayProducts(productsData)
+    : displayProducts(
+        productsData.filter((product) => product.category === selectedCategory)
+      );
+}

@@ -4,16 +4,18 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>product Filter</title>
-    <link rel="stylesheet" href="public/css/main.css" />
+    <link rel="stylesheet" href="./assets/css/main.css" />
   </head>
   <body>
     <!-- header -->
     <header
-      class="px-8 py-4 bg-[#232C33] font-poppins text-white flex flex-row items-center justify-between"
+      class="px-8 py-4 bg-[#232C33] font-poppins text-white flex flex-row items-center justify-between fixed w-full"
     >
       <!-- logo div -->
       <div class="logo">
-        <h1 class="font-extrabold text-2xl">Vedha's Clothings</h1>
+        <h1 class="font-extrabold text-2xl cursor-pointer">
+          Vedha's Clothings
+        </h1>
       </div>
       <!-- navbar -->
       <nav class="flex items-center gap-6">
@@ -65,9 +67,9 @@
         </a>
       </nav>
     </header>
-    <main class="grid grid-cols-main-col font-poppins">
+    <main class="grid font-inter pt-[68px]">
       <!-- filter section -->
-      <section class="py-2">
+      <section class="py-2 border-r-[1.5px] h-screen fixed">
         <!-- title div -->
         <div class="border-b-[1.5px] px-8 py-2 flex items-center gap-2">
           <img
@@ -88,32 +90,51 @@
         </div>
       </section>
       <!-- product section -->
-      <section class="px-4 py-8">
+      <section class="px-4 py-8 ml-[178px]">
         <!-- products container -->
-        <div class="grid grid-cols-5 gap-4 gap-y-8" id="products-container">
+        <div
+          class="grid grid-cols-5 gap-4 gap-y-8 w-full"
+          id="products-container"
+        >
           <!-- product card -->
-          <!-- /*  <div class="bg-white w-[180px] h-[320px]"> -->
-          <!-- product img -->
-          <!-- <img
+          <div class="bg-white w-[180px] relative">
+            <!-- product img -->
+            <img
               class="h-[240px] w-full"
               src="https://www.dennislingo.com/cdn/shop/products/4_6c6c6c34-aadb-4294-b7c5-95784455cc9d_720x.jpg?v=1663893926"
               alt=""
-            /> -->
-          <!-- products details -->
-          <!-- <div class="py-2 space-y-2">
+            />
+            <!-- products details -->
+            <div class="py-2 space-y-2">
               <h1 class="text-sm font-medium">
                 Cotton Buffalo Check Slim Fit Casual Shirt
-              </h1> -->
-          <!-- price -->
-          <!-- <div class="flex items-center justify-between">
-                <p>₹699</p>
-                <p>4.5⭐</p>
+              </h1>
+              <!-- price area -->
+              <div class="flex items-center gap-2">
+                <p class="text-md font-semibold">₹699</p>
+                <p class="text-xs line-through">₹800</p>
+                <p class="text-xs text-[#f25227]">68% off</p>
               </div>
+              <!-- size area -->
+              <div class="flex items-center gap-2">
+                <span
+                  class="border px-2 py-0.5 text-xs hover:bg-gray-950 hover:text-white cursor-pointer"
+                  >xl</span
+                >
+                <span class="border px-2 py-0.5 text-xs">xl</span>
+                <span class="border px-2 py-0.5 text-xs">xl</span>
+              </div>
+              <!-- badge -->
             </div>
-          </div> -->
+            <div
+              class="bg-red-500 rounded-tr-md rounded-br-md text-xs px-2 text-white absolute top-0 mt-0"
+            >
+              out of stock
+            </div>
+          </div>
         </div>
       </section>
     </main>
-    <script src="./public/js/script.js"></script>
+    <!-- <script type="module" src="./assets/js/script.js"></script> -->
   </body>
 </html>
