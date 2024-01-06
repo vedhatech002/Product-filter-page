@@ -10,6 +10,7 @@ export default {
       fontFamily: {
         poppins: "'Poppins', sans-serif",
         inter: "'Inter', sans-serif",
+        rubik: "font-family: 'Rubik Maps', system-ui ",
       },
       gridTemplateColumns: {
         "main-col": " 0.5fr 2fr",

@@ -1,5 +1,37 @@
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@200;400;600;700;800&family=Poppins:wght@200;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Rubik+Maps&display=swap");
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.product-card {
+  @apply bg-white w-full relative;
+}
+.product-details {
+  @apply py-2 space-y-2;
+}
+.product-img {
+  @apply h-[240px] w-full;
+}
+.badge {
+  @apply bg-red-500 rounded-tr-md rounded-br-md text-xs px-2 text-white absolute top-0;
+}
+.price-details {
+  @apply flex items-center gap-2;
+}
+.current-price {
+  @apply font-semibold;
+}
+.mrp-price {
+  @apply text-xs line-through;
+}
+.offer {
+  @apply text-xs text-[#f25227];
+}
+.size-list {
+  @apply flex items-center gap-2;
+}
+.size-box {
+  @apply border px-2 py-0.5 text-xs hover:bg-gray-950 hover:text-white cursor-pointer;
+}
