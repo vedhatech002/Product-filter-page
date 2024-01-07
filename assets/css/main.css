@@ -15,7 +15,7 @@
   @apply h-[240px] w-full;
 }
 .badge {
-  @apply bg-red-500 rounded-tr-md rounded-br-md text-xs px-2 text-white absolute top-0;
+  @apply bg-red-600 mt-1 rounded-tr-md rounded-br-md text-xs px-2 text-white absolute top-0;
 }
 .price-details {
   @apply flex items-center gap-2;
@@ -34,4 +34,7 @@
 }
 .size-box {
   @apply border px-2 py-0.5 text-xs hover:bg-gray-950 hover:text-white cursor-pointer;
+}
+.product-name {
+  @apply text-sm font-medium;
 }
