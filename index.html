@@ -100,7 +100,7 @@
     <main class="grid font-inter pt-[68px]">
       <!-- filter section -->
       <section
-        class="py-1 border-r-[1px] h-screen md:block hidden w-[260px] fixed"
+        class="py-1 border-r-[1px] h-screen md:block hidden w-[260px] fixed font-inter"
       >
         <!-- title div -->
         <div class="border-b-[1px] px-8 py-2 flex items-center gap-2">
@@ -126,7 +126,10 @@
         </div>
         <!-- category -->
         <div class="px-8 py-4 border-b-[1px]">
-          <div class="flex items-center justify-between cursor-pointer">
+          <div
+            class="flex items-center justify-between cursor-pointer"
+            id="drop-down"
+          >
             <h3 class="font-semibold text-sm text-[#232c33]">Categories</h3>
             <span>
               <svg
@@ -147,13 +150,16 @@
 
           <!-- category list -->
           <ul
-            class="px-2 text-sm font-medium text-black"
+            class="space-y-3 mt-4 text-sm font-medium text-[#232c33d6]"
             id="category-list"
           ></ul>
         </div>
         <!-- sort by -->
         <div class="px-8 py-4 border-b-[1px]">
-          <div class="flex items-center justify-between cursor-pointer">
+          <div
+            class="flex items-center justify-between cursor-pointer"
+            id="drop-down"
+          >
             <h3 class="font-semibold text-sm text-[#232c33]">Sort by</h3>
             <span>
               <svg
@@ -171,16 +177,13 @@
               </svg>
             </span>
           </div>
-
-          <!-- category list -->
-          <ul
-            class="px-2 text-sm font-medium text-black"
-            id="category-list"
-          ></ul>
         </div>
         <!-- brands -->
         <div class="px-8 py-4 border-b-[1px]">
-          <div class="flex items-center justify-between cursor-pointer">
+          <div
+            class="flex items-center justify-between cursor-pointer"
+            id="drop-down"
+          >
             <h3 class="font-semibold text-sm text-[#232c33]">Brands</h3>
             <span>
               <svg
@@ -200,10 +203,6 @@
           </div>
 
           <!-- category list -->
-          <ul
-            class="px-2 text-sm font-medium text-black"
-            id="category-list"
-          ></ul>
         </div>
       </section>
       <!-- product section -->

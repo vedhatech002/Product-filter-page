@@ -2,6 +2,7 @@ import productsData from "../data/data.json";
 console.log(productsData);
 
 const productContainer = document.querySelector("#products-container");
+const categoryList = document.querySelector("#category-list");
 
 // calculate discounted price and store it in data
 for (const product of productsData) {
@@ -17,36 +18,6 @@ for (const product of productsData) {
 }
 
 console.log(productsData);
-
-/*<!-- product card -->
-<div class="product-card">
-  <!-- product img -->
-  <img
-    class="product-img"
-    src="https://www.dennislingo.com/cdn/shop/products/4_6c6c6c34-aadb-4294-b7c5-95784455cc9d_720x.jpg?v=1663893926"
-    alt=""
-  />
-  <!-- products details -->
-  <div class="product-details">
-    <h1 class="text-sm font-medium">
-      Cotton Buffalo Check Slim Fit Casual Shirt
-    </h1>
-    <!-- price area -->
-    <div class="price-details">
-      <p class="current-price">₹699</p>
-      <p class="mrp-price">₹800</p>
-      <p class="offer">68% off</p>
-    </div>
-    <!-- size area -->
-    <div class="size-list">
-      <span class="size-box">L</span>
-      <span class="size-box">XL</span>
-      <span class="size-box">XXL</span>
-    </div>
-  </div>
-  <!-- badge -->
-  <div class="badge">out of stock</div>
-</div>*/
 
 function displayProducts(datas) {
   if (datas.length > 0) {
@@ -126,7 +97,69 @@ function displayProducts(datas) {
     });
 
     console.dir(productCardsfragment);
+    productContainer.innerHTML = "";
     productContainer.append(productCardsfragment);
   }
 }
 displayProducts(productsData);
+
+function setCategories() {
+  const allCategories = productsData.map((product) => product.category);
+  const categories = [
+    "All",
+    ...allCategories.filter((category, index) => {
+      return allCategories.indexOf(category) === index;
+    }),
+  ];
+
+  categoryList.innerHTML = categories
+    .map(
+      (category) =>
+        `<li class="cursor-pointer">
+        <label
+          for="${category}"
+          class="flex items-center gap-2 text-xs font-semibold cursor-pointer capitalize"
+         
+        >
+          <input
+            class="p-0.5"
+            type="radio"
+            name="category"
+            value="${category}"
+            id="${category}"
+          />${category}
+        </label>
+      </li>`
+    )
+    .join("");
+
+  // filter
+  categoryList.addEventListener("change", filterbyCategories);
+}
+setCategories();
+
+//filter by categoris
+function filterbyCategories(e) {
+  let selectedCategory = e.target.value;
+  console.log(selectedCategory);
+  // console.log(selectedCategory);
+  selectedCategory === "All"
+    ? displayProducts(productsData)
+    : displayProducts(
+        productsData.filter((product) => product.category === selectedCategory)
+      );
+}
+
+//dropdown
+const dropdownEl = document.querySelectorAll("#drop-down");
+console.log(dropdownEl);
+dropdownEl.forEach((el) => {
+  el.addEventListener("click", (e) => {
+    let siblingEL = el.nextElementSibling;
+    if (siblingEL) {
+      siblingEL.classList.toggle("hidden");
+    } else {
+      alert("we working on that feature...");
+    }
+  });
+});
