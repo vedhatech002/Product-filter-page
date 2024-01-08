@@ -126,7 +126,7 @@ function setCategories() {
             type="radio"
             name="category"
             value="${category}"
-            id="${category}"
+            id="${category}" ${category === "All" ? "checked" : ""}
           />${category}
         </label>
       </li>`
