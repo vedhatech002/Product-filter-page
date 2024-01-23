@@ -3,7 +3,7 @@ console.log(productsData);
 
 const productContainer = document.querySelector("#products-container");
 const categoryList = document.querySelector("#category-list");
-
+const brandList = document.querySelector("#brand-list");
 // calculate discounted price and store it in data
 for (const product of productsData) {
   if (product.discount_percentage !== null) {
@@ -112,6 +112,17 @@ function setCategories() {
     }),
   ];
 
+  // set brand
+  const allBrand = productsData.map((product) => {
+    return product.brand;
+  });
+  console.log(allBrand);
+  const brands = [
+    ...allBrand.filter((category, index) => {
+      return allBrand.indexOf(category) === index;
+    }),
+  ];
+
   categoryList.innerHTML = categories
     .map(
       (category) =>
@@ -130,6 +141,28 @@ function setCategories() {
           />${category}
         </label>
       </li>`
+    )
+    .join("");
+
+  brandList.innerHTML = brands
+    .map(
+      (brand) => `
+    <li class="cursor-pointer">
+        <label
+          for="${brand}"
+          class="flex items-center gap-2 text-xs font-semibold cursor-pointer capitalize"
+         
+        >
+          <input
+            class="p-0.5"
+            type="radio"
+            name="category"
+            value="${brand}"
+            id="${brand}" 
+          />${brand}
+        </label>
+      </li>
+    `
     )
     .join("");
 
@@ -163,3 +196,5 @@ dropdownEl.forEach((el) => {
     }
   });
 });
+
+console.log(brands);
