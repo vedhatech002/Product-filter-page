@@ -4,6 +4,7 @@ console.log(productsData);
 const productContainer = document.querySelector("#products-container");
 const categoryList = document.querySelector("#category-list");
 const brandList = document.querySelector("#brand-list");
+const sortList = document.querySelector("#sortList");
 // calculate discounted price and store it in data
 for (const product of productsData) {
   if (product.discount_percentage !== null) {
@@ -103,7 +104,7 @@ function displayProducts(datas) {
 }
 displayProducts(productsData);
 
-function setCategories() {
+function setFilterOption() {
   const allCategories = productsData.map((product) => product.category);
   const categories = [
     "All",
@@ -144,6 +145,39 @@ function setCategories() {
     )
     .join("");
 
+  sortList.innerHTML = `
+<li class="cursor-pointer">
+        <label
+          for="lowToHigh"
+          class="flex items-center gap-2 text-xs font-semibold cursor-pointer capitalize"
+         
+        >
+          <input
+            class="p-0.5"
+            type="radio"
+            name="sort"
+            value="low"
+            id="lowToHigh"
+          />low -to- High
+        </label>
+      </li>
+      <li class="cursor-pointer">
+        <label
+          for="HighToLow"
+          class="flex items-center gap-2 text-xs font-semibold cursor-pointer capitalize"
+         
+        >
+          <input
+            class="p-0.5"
+            type="radio"
+            name="sort"
+            value="low"
+            id="HighToLow"
+          />High -to- Low
+        </label>
+      </li>
+`;
+
   brandList.innerHTML = brands
     .map(
       (brand) => `
@@ -155,8 +189,8 @@ function setCategories() {
         >
           <input
             class="p-0.5"
-            type="radio"
-            name="category"
+            type="checkbox"
+            name="brand"
             value="${brand}"
             id="${brand}" 
           />${brand}
@@ -168,19 +202,58 @@ function setCategories() {
 
   // filter
   categoryList.addEventListener("change", filterbyCategories);
+  sortList.addEventListener("change", sortbyPrice);
+  brandList.addEventListener("change", filterbyBrand);
 }
-setCategories();
+setFilterOption();
 
 //filter by categoris
+
 function filterbyCategories(e) {
   let selectedCategory = e.target.value;
-  console.log(selectedCategory);
+  // console.log(selectedCategory);
   // console.log(selectedCategory);
   selectedCategory === "All"
     ? displayProducts(productsData)
     : displayProducts(
         productsData.filter((product) => product.category === selectedCategory)
       );
+}
+
+function sortbyPrice(e) {
+  const targetId = e.target.id;
+
+  if (targetId === "lowToHigh") {
+    displayProducts(
+      productsData
+        .map((product) => product)
+        .sort((a, b) => {
+          return a.price - b.price;
+        })
+    );
+  } else if (targetId === "HighToLow") {
+    displayProducts(
+      productsData
+        .map((product) => product)
+        .sort((a, b) => {
+          return b.price - a.price;
+        })
+    );
+  }
+}
+
+//filter by brand
+function filterbyBrand() {
+  const selectedBrands = Array.from(
+    brandList.querySelectorAll('input[name="brand"]:checked')
+  ).map((input) => input.value);
+
+  if (selectedBrands.length > 0) {
+    const selectedBrandProducts = selectedBrands.flatMap((brand) =>
+      productsData.filter((product) => product.brand === brand)
+    );
+    displayProducts(selectedBrandProducts);
+  }
 }
 
 //dropdown
@@ -196,5 +269,3 @@ dropdownEl.forEach((el) => {
     }
   });
 });
-
-console.log(brands);
