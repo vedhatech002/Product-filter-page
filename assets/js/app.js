@@ -269,3 +269,27 @@ dropdownEl.forEach((el) => {
     }
   });
 });
+
+// search functionalities
+const searchBarEl = document.querySelector("#search-bar");
+
+searchBarEl.addEventListener("input", (e) => {
+  const text = e.target.value;
+
+  txtSearch(text);
+});
+
+function txtSearch(txt) {
+  const searchText = txt.toLowerCase();
+  const result = productsData.filter(
+    (product) =>
+      product.name.toLowerCase().includes(searchText) ||
+      product.category.toLocaleLowerCase().includes(searchText)
+  );
+
+  displayProducts(result);
+}
+
+document.querySelector("#search-icon").addEventListener("click", () => {
+  searchBarEl.classList.toggle("hidden");
+});
