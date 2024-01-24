@@ -1,10 +1,11 @@
+//import data from json
 import productsData from "../data/data.json";
-console.log(productsData);
 
 const productContainer = document.querySelector("#products-container");
 const categoryList = document.querySelector("#category-list");
 const brandList = document.querySelector("#brand-list");
 const sortList = document.querySelector("#sortList");
+
 // calculate discounted price and store it in data
 for (const product of productsData) {
   if (product.discount_percentage !== null) {
@@ -17,8 +18,6 @@ for (const product of productsData) {
     product.discountedPrice = product.price;
   }
 }
-
-console.log(productsData);
 
 function displayProducts(datas) {
   if (datas.length > 0) {
@@ -67,7 +66,6 @@ function displayProducts(datas) {
 
       const sizeBoxEL = document.createElement("span");
       sizeBoxEL.classList.add("size-box");
-      console.log(productObj.sizes);
 
       const sizes = productObj.sizes;
       sizes.forEach((el) => {
@@ -97,7 +95,6 @@ function displayProducts(datas) {
       productCardsfragment.append(cardDivEl);
     });
 
-    console.dir(productCardsfragment);
     productContainer.innerHTML = "";
     productContainer.append(productCardsfragment);
   }
@@ -117,7 +114,7 @@ function setFilterOption() {
   const allBrand = productsData.map((product) => {
     return product.brand;
   });
-  console.log(allBrand);
+
   const brands = [
     ...allBrand.filter((category, index) => {
       return allBrand.indexOf(category) === index;
@@ -256,9 +253,9 @@ function filterbyBrand() {
   }
 }
 
-//dropdown
+//dropdown list
 const dropdownEl = document.querySelectorAll("#drop-down");
-console.log(dropdownEl);
+
 dropdownEl.forEach((el) => {
   el.addEventListener("click", (e) => {
     let siblingEL = el.nextElementSibling;
@@ -279,6 +276,7 @@ searchBarEl.addEventListener("input", (e) => {
   txtSearch(text);
 });
 
+//textsearch functionality
 function txtSearch(txt) {
   const searchText = txt.toLowerCase();
   const result = productsData.filter(
@@ -290,6 +288,20 @@ function txtSearch(txt) {
   displayProducts(result);
 }
 
-document.querySelector("#search-icon").addEventListener("click", () => {
+const searchIcon = document.querySelector("#search-icon");
+
+searchIcon.addEventListener("click", () => {
   searchBarEl.classList.toggle("hidden");
+  changeIcon(searchIcon, "fa-magnifying-glass", "fa-xmark");
 });
+
+// function to change Icon
+function changeIcon(element, targetedClass, changeClass) {
+  if (element.classList.contains(targetedClass)) {
+    element.classList.remove(targetedClass);
+    element.classList.add(changeClass);
+  } else {
+    element.classList.add(targetedClass);
+    element.classList.remove(changeClass);
+  }
+}

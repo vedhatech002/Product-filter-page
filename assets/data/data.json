@@ -124,5 +124,19 @@
     "rating": 4.2,
     "color": "Teal",
     "brand": "Dennis Lingo"
+  },
+  {
+    "id": 9,
+    "name": "Black Racing Oversized Sweat Tshirt",
+    "category": "tshirts",
+    "price": 1099,
+    "img": "https://www.snitch.co.in/cdn/shop/files/Swatshirt353.jpg?v=1704803556",
+    "sizes": ["S", "L", "XXL"],
+    "in_stock": true,
+    "discount_percentage": 15,
+    "discountedPrice": null,
+    "rating": 4.2,
+    "color": "Teal",
+    "brand": "Dennis Lingo"
   }
 ]

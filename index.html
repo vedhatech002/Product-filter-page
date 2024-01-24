@@ -9,8 +9,14 @@
       type="image/x-icon"
     />
     <title>vedha's online clothings</title>
+
+    <script
+      src="https://kit.fontawesome.com/6ae5c2f316.js"
+      crossorigin="anonymous"
+    ></script>
     <link rel="stylesheet" href="./assets/css/main.css" />
   </head>
+
   <body>
     <!-- header -->
     <header
@@ -23,46 +29,23 @@
       </div>
       <!-- navbar -->
       <nav class="flex items-center gap-6">
-        <div class="relative">
-          <a id="search-icon" class="cursor-pointer">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              id="search"
-              width="28"
-              height="28"
-              version="1.1"
-              viewBox="0 0 29 29"
-              xml:space="preserve"
-            >
-              <circle
-                cx="11.854"
-                cy="11.854"
-                r="9"
-                fill="none"
-                stroke="#000"
-                stroke-miterlimit="10"
-                stroke-width="2"
-              ></circle>
-              <path
-                fill="none"
-                stroke="#000"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                stroke-miterlimit="10"
-                stroke-width="2"
-                d="M18.451 18.451l7.695 7.695"
-              ></path>
-            </svg>
-          </a>
+        <!-- search  -->
+        <div class="relative text-2xl">
+          <i
+            class="fa-solid fa-magnifying-glass cursor-pointer"
+            id="search-icon"
+          ></i>
+
           <input
             id="search-bar"
             type="text"
-            class="bg-[#f8f8f8] border-[1.5px] px-4 py-2 w-[300px] rounded-md outline-none text-xs absolute right-10 -top-0.5"
+            class="bg-[#f8f8f8] hidden border-[1.5px] px-4 py-2 w-[300px] rounded-md outline-none text-xs absolute right-8 -top-0.5"
             placeholder="Search "
           />
         </div>
 
-        <a href="#">
+        <!-- profile -->
+        <a class="cursor-pointer text-xl">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 256 256"
@@ -91,7 +74,10 @@
             ></path>
           </svg>
         </a>
-        <a href="#">
+
+        <!-- cart -->
+
+        <a class="cursor-pointer text-xl">
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="28"
@@ -106,6 +92,7 @@
         </a>
       </nav>
     </header>
+    <!-- main area for products list and filter page -->
     <main class="grid font-inter pt-[68px]">
       <!-- filter section -->
       <section
